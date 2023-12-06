@@ -202,6 +202,85 @@ function convertToINR(number) {
 
 
 
+// ***********  To Euro   ******************
+
+function convertToEuro(number) {
+    const units = [
+      'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+      'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+    ];
+  
+    const tens = [
+      '', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
+    ];
+  
+    function convertLessThanOneThousand(number) {
+      let current = number;
+      let words = '';
+  
+      if (current % 100 < 20) {
+        words += units[current % 100];
+        current = Math.floor(current / 100);
+      } else {
+        words += units[current % 10];
+        current = Math.floor(current / 10);
+  
+        if (current % 10 !== 0) {
+          words = tens[Math.floor(current % 10)] + ' ' + words;
+        }
+        current = Math.floor(current / 10);
+      }
+  
+      if (current > 0) {
+        words = units[current] + ' hundred ' + words;
+      }
+  
+      return words.trim();
+    }
+  
+    function numberToWordsWithDecimals(number) {
+      if (number === 0) {
+        return 'zero euro';
+      } else {
+        let words = '';
+        let cents = Math.round((number % 1) * 100);
+  
+        number = Math.floor(number);
+  
+        if (number >= 1e12) {
+          words += convertLessThanOneThousand(Math.floor(number / 1e12)) + ' trillion ';
+          number %= 1e12;
+        }
+        if (number >= 1e9) {
+          words += convertLessThanOneThousand(Math.floor(number / 1e9)) + ' billion ';
+          number %= 1e9;
+        }
+        if (number >= 1e6) {
+          words += convertLessThanOneThousand(Math.floor(number / 1e6)) + ' million ';
+          number %= 1e6;
+        }
+        if (number >= 1e3) {
+          words += convertLessThanOneThousand(Math.floor(number / 1e3)) + ' thousand ';
+          number %= 1e3;
+        }
+  
+        words += convertLessThanOneThousand(number);
+        words += " euro";
+  
+        if (cents > 0) {
+          words += ' and ' + convertLessThanOneThousand(cents) + ' cent';
+        }
+  
+        return words;
+      }
+    }
+  
+    return numberToWordsWithDecimals(number);
+  }
+  
+  
+// End of EURO conv function
+
 function displayText()
 {
     var nm=document.getElementById("country").value;
@@ -211,13 +290,20 @@ function displayText()
     const amount = a;
     if(nm=='USD')
     {
-       
+        document.getElementById("nt1").innerHTML='Note: 1 Dollar = 100 Cents'
         const words = convertMoneyToWords(amount);
         document.getElementById("l1").innerHTML=words
     }
     else if(nm=='INR')
     {
+        document.getElementById("nt1").innerHTML='Note: 1 Rupee = 100 Pasie'
         const words = convertToINR(amount);
+        document.getElementById("l1").innerHTML=words
+    }
+    else if(nm=='EUR')
+    {
+        document.getElementById("nt1").innerHTML='Note: 1 Euro = 100 Cents'
+        const words = convertToEuro(amount);
         document.getElementById("l1").innerHTML=words
     }
 }

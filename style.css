@@ -5,8 +5,14 @@
 }
 
 #country{
-    width: 10vb;
+    width: 12vb;
     height: 7.5vh;
     border-radius: 7px;
     font-size: large;
+}
+
+.op{
+    margin-top: 4vh;
+    font-size:large;
+    font-family:'Courier New', Courier, monospace;
 }
