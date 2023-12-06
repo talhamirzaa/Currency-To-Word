@@ -1,15 +1,17 @@
+const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const scales = ['', 'thousand', 'million', 'billion', 'trillion'];
+
+
 function convertMoneyToWords(amount) {
-    const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-    const scales = ['', 'thousand', 'million', 'billion', 'trillion'];
   
     if (amount === 0) {
       return 'zero dollars';
     }
   
     const dollars = Math.floor(amount);
-    //here i need to solve that 'after deicaml cent to dollar' issue
+    //here it needed to solve that 'after deicaml cent to dollar' issue
     const cents = Math.round((amount - dollars) * 100);
     const dollarsWords = convertNumberToWords(dollars,units,teens,tens, scales);
     const centsWords = convertNumberToWords(cents,units,teens,tens,scales);
@@ -81,18 +83,13 @@ function convertMoneyToWords(amount) {
     return words.trim();
   }
   
-//   const amount = 1234.56;
-//   const words = convertMoneyToWords(amount);
-//   console.log(words); // Output: "one thousand two hundred thirty-four dollars and fifty-six cents"
-  
-
 
 // **** For INR *****
 
 function convertToINR(number) {
-    const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    // const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    // const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    // const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
   
     if (number === 0) {
       return 'zero';
@@ -146,9 +143,9 @@ function convertToINR(number) {
   }
   
   function convertThreeDigitNumberTotxt(number) {
-    const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    // const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    // const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    // const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
   
     let txt = '';
   
@@ -174,9 +171,9 @@ function convertToINR(number) {
   }
   
   function convertTwoDigitNumberTotxt(number) {
-    const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    // const units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    // const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    // const tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
   
     let txt = '';
   
@@ -194,9 +191,6 @@ function convertToINR(number) {
     return txt.trim();
   }
   
-  const num = 123456789.99;
-  const txt = convertToINR(num);
-  console.log(txt); // Output: "twelve crore thirty-four lakh fifty-six thousand seven hundred eighty-nine rupees and ninety-nine paise"
   
  // END of INR conv func 
 
@@ -206,7 +200,7 @@ function convertToINR(number) {
 
 function convertToEuro(number) {
     const units = [
-      'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
+      '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine',
       'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
     ];
   
@@ -277,6 +271,8 @@ function convertToEuro(number) {
   
     return numberToWordsWithDecimals(number);
   }
+  
+  console.log(convertNumberToWords(112)); // one hundred twelve euro
   
   
 // End of EURO conv function
