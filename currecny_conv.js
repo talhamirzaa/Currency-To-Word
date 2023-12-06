@@ -286,19 +286,19 @@ function displayText()
     const amount = a;
     if(nm=='USD')
     {
-        document.getElementById("nt1").innerHTML='Note: 1 Dollar = 100 Cents'
+        document.getElementById("nt1").innerHTML='Note:<br>1 Dollar = 100 Cents'
         const words = convertMoneyToWords(amount);
         document.getElementById("l1").innerHTML=words
     }
     else if(nm=='INR')
     {
-        document.getElementById("nt1").innerHTML='Note: 1 Rupee = 100 Pasie'
+        document.getElementById("nt1").innerHTML='Note:<br>1 Rupee = 100 Pasie'
         const words = convertToINR(amount);
         document.getElementById("l1").innerHTML=words
     }
     else if(nm=='EUR')
     {
-        document.getElementById("nt1").innerHTML='Note: 1 Euro = 100 Cents'
+        document.getElementById("nt1").innerHTML='Note:<br>1 Euro = 100 Cents'
         const words = convertToEuro(amount);
         document.getElementById("l1").innerHTML=words
     }
