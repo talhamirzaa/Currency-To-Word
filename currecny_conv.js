@@ -13,7 +13,7 @@ function convertMoneyToWords(amount) {
     const dollars = Math.floor(amount);
     //here it needed to solve that 'after deicaml cent to dollar' issue
     const cents = Math.round((amount - dollars) * 100);
-    const dollarsWords = convertNumberToWords(dollars,units,teens,tens, scales);
+    const dollarsWords = convertNumberToWords(dollars,units,teens,tens,scales);
     const centsWords = convertNumberToWords(cents,units,teens,tens,scales);
   
     let result = '';
@@ -38,7 +38,7 @@ function convertMoneyToWords(amount) {
     return result;
   }
   
-  function convertNumberToWords(number,units,teens,tens, scales) {
+  function convertNumberToWords(number,units,teens,tens,scales) {
     if (number < 0 || number > 999999999999) {
       throw new Error('Number out of range');
     }
