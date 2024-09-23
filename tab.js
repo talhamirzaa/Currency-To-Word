@@ -10,6 +10,17 @@ function openPage(pageName,elmnt,color) {
     }
     document.getElementById(pageName).style.display = "block";
     elmnt.style.backgroundColor = color;
+    if(pageName=='Home')
+    {
+      document.getElementById("defaultOpen").style.textDecoration = "underline";
+      document.getElementById("newbtn").style.textDecoration = "none";
+    }
+    else
+    {
+       document.getElementById("newbtn").style.textDecoration = "underline";
+       document.getElementById("defaultOpen").style.textDecoration = "none";
+    }
+    
   }
   
   // Get the element with id="defaultOpen" and click on it
